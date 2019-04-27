@@ -48,7 +48,7 @@ void Processor::ExecuteMachineCode() {
     ip++;
 
     word operand = im->GetLocation(ip);
-    instruction->Execute(operand, stack, ip, sp, flags);
+    instruction->Execute(operand, stack, im, dm, ip, sp, flags);
 
     if(ip < 0 || ip > im->GetSize()) {
       error = ERROR_INSTRUCTION_POINTER_OUT_OF_RANGE;

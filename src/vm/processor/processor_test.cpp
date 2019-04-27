@@ -114,7 +114,7 @@ namespace vm {
     MockInstruction instruction = MockInstruction();
 
     EXPECT_CALL(instruction, GetOpcode()).WillOnce(Return(opcode));
-    EXPECT_CALL(instruction, Execute(_, _, _, _, _)).WillOnce(Invoke([](word operand, Memory* stack, word& ip, word &sp, byte& flags){
+    EXPECT_CALL(instruction, Execute(_, _, _, _, _, _, _)).WillOnce(Invoke([](word operand, Memory* im, Memory* dm, Memory* stack, word& ip, word &sp, byte& flags){
       ip = 1025;
     }));
 
@@ -138,7 +138,7 @@ namespace vm {
     MockInstruction instruction = MockInstruction();
 
     EXPECT_CALL(instruction, GetOpcode()).WillOnce(Return(opcode));
-    EXPECT_CALL(instruction, Execute(_, _, _, _, _)).WillOnce(Invoke([](word operand, Memory* stack, word& ip, word &sp, byte& flags){
+    EXPECT_CALL(instruction, Execute(_, _, _, _, _, _, _)).WillOnce(Invoke([](word operand, Memory* im, Memory* dm, Memory* stack, word& ip, word &sp, byte& flags){
       sp = stack->GetSize() + 1;
     }));
 
@@ -162,7 +162,7 @@ namespace vm {
     MockInstruction instruction = MockInstruction();
 
     EXPECT_CALL(instruction, GetOpcode()).WillOnce(Return(opcode));
-    EXPECT_CALL(instruction, Execute(_, _, _, _, _)).WillOnce(Invoke([](word operand, Memory* stack, word& ip, word &sp, byte& flags){
+    EXPECT_CALL(instruction, Execute(_, _, _, _, _, _, _)).WillOnce(Invoke([](word operand, Memory* im, Memory* dm, Memory* stack, word& ip, word &sp, byte& flags){
       flags |= STATUS_BITMASK_HALT;
     }));
 

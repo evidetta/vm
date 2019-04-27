@@ -9,7 +9,7 @@ namespace vm {
   class MockInstruction : public Instruction {
   public:
     MOCK_METHOD0(GetOpcode, word());
-    MOCK_METHOD5(Execute, void(word, Memory*, word&, word&, byte&));
+    MOCK_METHOD7(Execute, void(word, Memory*, Memory*, Memory*, word&, word&, byte&));
   };
 
 }

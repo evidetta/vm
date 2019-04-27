@@ -21,6 +21,8 @@ namespace vm {
   const byte ERROR_INSTRUCTION_POINTER_OUT_OF_RANGE = 0x06;
   const byte ERROR_STACK_POINTER_OUT_OF_RANGE = 0x07;
 
+  const word OPCODE_NOOP = 0x00;
+
 }
 
 #endif

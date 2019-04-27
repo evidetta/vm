@@ -6,9 +6,9 @@ GTEST_DIR= /usr/src/googletest/googletest
 GMOCK_DIR= /usr/src/googletest/googlemock
 BIN_DIR= ../bin
 
-test: $(BIN_DIR)/gtest-all.o $(BIN_DIR)/gmock-all.o $(BIN_DIR)/gmock_main.o $(BIN_DIR)/processor.o $(BIN_DIR)/processor_test.o $(BIN_DIR)/memory.o $(BIN_DIR)/instruction.o $(BIN_DIR)/instruction_set.o $(BIN_DIR)/instruction_set_test.o
+test: $(BIN_DIR)/gtest-all.o $(BIN_DIR)/gmock-all.o $(BIN_DIR)/gmock_main.o $(BIN_DIR)/processor.o $(BIN_DIR)/processor_test.o $(BIN_DIR)/memory.o $(BIN_DIR)/instruction.o $(BIN_DIR)/instruction_set.o $(BIN_DIR)/instruction_set_test.o $(BIN_DIR)/noop.o $(BIN_DIR)/noop_test.o
 	mkdir -p $(BIN_DIR)
-	$(CXX) $(BIN_DIR)/gmock_main.o $(BIN_DIR)/gmock-all.o $(BIN_DIR)/gtest-all.o $(BIN_DIR)/processor.o $(BIN_DIR)/processor_test.o $(BIN_DIR)/memory.o $(BIN_DIR)/instruction.o $(BIN_DIR)/instruction_set.o $(BIN_DIR)/instruction_set_test.o -o $(BIN_DIR)/test $(CXX_TEST_FLAGS)
+	$(CXX) $(BIN_DIR)/gmock_main.o $(BIN_DIR)/gmock-all.o $(BIN_DIR)/gtest-all.o $(BIN_DIR)/processor.o $(BIN_DIR)/processor_test.o $(BIN_DIR)/memory.o $(BIN_DIR)/instruction.o $(BIN_DIR)/instruction_set.o $(BIN_DIR)/instruction_set_test.o $(BIN_DIR)/noop.o $(BIN_DIR)/noop_test.o -o $(BIN_DIR)/test $(CXX_TEST_FLAGS)
 	$(BIN_DIR)/test
 $(BIN_DIR)/processor.o: vm/processor/processor.cpp
 	$(CXX) $(CXX_COMPILE_FLAGS) -c vm/processor/processor.cpp -o $(BIN_DIR)/processor.o
@@ -22,6 +22,10 @@ $(BIN_DIR)/instruction_set.o: vm/instruction/instruction_set.cpp
 	$(CXX) $(CXX_COMPILE_FLAGS) -c vm/instruction/instruction_set.cpp -o $(BIN_DIR)/instruction_set.o
 $(BIN_DIR)/instruction_set_test.o: vm/instruction/instruction_set_test.cpp
 	$(CXX) $(CXX_COMPILE_FLAGS) -c vm/instruction/instruction_set_test.cpp -o $(BIN_DIR)/instruction_set_test.o
+$(BIN_DIR)/noop.o: vm/instruction/set/noop.cpp
+	$(CXX) $(CXX_COMPILE_FLAGS) -c vm/instruction/set/noop.cpp -o $(BIN_DIR)/noop.o
+$(BIN_DIR)/noop_test.o: vm/instruction/set/noop_test.cpp
+	$(CXX) $(CXX_COMPILE_FLAGS) -c vm/instruction/set/noop_test.cpp -o $(BIN_DIR)/noop_test.o
 $(BIN_DIR)/gtest-all.o: $(GTEST_DIR)/src/gtest-all.cc
 	$(CXX) $(CXX_COMPILE_FLAGS) -c $(GTEST_DIR)/src/gtest-all.cc -I $(GTEST_DIR) -I $(GTEST_DIR)/include -o $(BIN_DIR)/gtest-all.o
 $(BIN_DIR)/gmock-all.o: $(GMOCK_DIR)/src/gmock-all.cc

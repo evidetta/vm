@@ -11,7 +11,7 @@ namespace vm {
     virtual ~Instruction() = 0;
 
     virtual word GetOpcode() = 0;
-    virtual void Execute(word operand, Memory* stack, word& ip, word &sp, byte& flags) = 0;
+    virtual void Execute(word operand, Memory *im, Memory *dm, Memory* stack, word& ip, word &sp, byte& flags) = 0;
   };
 }
 
